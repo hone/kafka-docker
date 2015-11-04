@@ -1,0 +1,19 @@
+compile: &defaults
+  build: .
+  volumes:
+    - .:/home/kafka/
+shell:
+  <<: *defaults
+  command: bash
+zookeeper:
+  <<: *defaults
+  expose:
+    - "2181"
+  command: /opt/kafka_2.10-0.8.2.0/bin/zookeeper-server-start.sh /opt/kafka_2.10-0.8.2.0/config/zookeeper.properties
+kafka:
+  <<: *defaults
+  links:
+    - zookeeper
+  ports:
+    - "9092:9092"
+  command: /home/kafka/bin/kafka-env-start.sh
