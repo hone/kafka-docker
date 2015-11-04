@@ -4,6 +4,9 @@ compile: &defaults
     - .:/home/kafka/
 shell:
   <<: *defaults
+  links:
+    - zookeeper
+    - kafka
   command: bash
 zookeeper:
   <<: *defaults
