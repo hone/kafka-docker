@@ -6,4 +6,3 @@ RUN mkdir -p /opt/ && \
 ENV PATH $PATH:/opt/kafka_2.10-0.8.2.0/bin
 
 RUN mkdir -p /home/kafka
-ENV HOME /home/kafka
